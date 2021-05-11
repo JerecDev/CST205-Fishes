@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<style>
+    div{
+        text-align: center;
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    table.center {
+        margin-left: auto; 
+        margin-right: auto;
+    }
+</style>
+
+<html>
+    <table class="center">
+        <tr>
+            <th>Species Name</th>
+            <th>Scientific Name</th>
+            <th>Fishing Rate</th>
+        </tr>
+        {% for d in randList %}
+            <tr>
+                <th> {{ d['Species Name'] }}</th>
+                <th> {{ d['Scientific Name'] }}</th>
+                <th> {{ d['Fishing Rate'] }}</th>
+            </tr>
+        {% endfor %}
+    </table>
+    <div>
+        <h4>Table Size: <a href="{{ url_for('random', tbSize=3) }}">3</a> <a href="{{ url_for('random', tbSize=5) }}">5</a> <a href="{{ url_for('random', tbSize=10) }}">10</a></h4>
+        <a href="{{ url_for('index') }}">Back to Home Page</a>
+    </div>
+    
+</html>
