@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Our API</h1>
+<br>
+<br>
+<p>Please enter a species name to learn more about them.</p>
+<!-- center the search box -->
+<style>
+    div{
+        text-align: center;
+    }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    table.center {
+        margin-left: auto; 
+        margin-right: auto;
+    }
+
+    h1{
+        text-align: center;
+    }
+    #search{
+        height:20px;
+        width: 25px
+        font-size: 14pt;
+    }
+    p{
+        text-align: center;
+    }
+    #searchButtton{
+        text-align: center;
+    }
+</style>
+
+<script>
+    //retrieve searchedvalue from the searchbox.
+    document.getElementById("searchButton").addEventListener("click", startSearch);
+    
+    //search function
+    function startSearch(){
+        var searchedval = document.getElementById("search").value;
+        // var apiUrl = "https://www.fishwatch.gov/api/species/"+searchedval;
+        // fetch(apiUrl).then(response => {return response.json();
+        // }).then(data => {
+        // $(display).update(data);
+        // }).catch(err => {
+        //     //do something here to detect error later.
+        // });
+        
+
+    }
+
+</script>
+
+<div id = "searchdiv">
+    <input type="text" id="search"><br>
+    <button type="button" id= "searchButton">Search</button>
+</div>
+
+
+
+
+
+<div id = display>
+
+</div>
+
+    <!-- the list of data shown from api -->
+    <div>
+        {%for datas in data %}
+            <span>{{datas['Species Name']}}</span>
+            <br>
+            <span>Scientific name: {{datas['Scientific Name']}}</span>
+            <br>
+        {%endfor%}
+    </div>
+    
+
+</body>
+
+<table class="center">
+    <tr>
+        <th>Species Name</th>
+        <th>Scientific Name</th>
+        <th>Fishing Rate</th>
+    </tr>
+    {% for d in randList %}
+        <tr>
+            <th> {{ d['Species Name'] }}</th>
+            <th> {{ d['Scientific Name'] }}</th>
+            <th> {{ d['Fishing Rate'] }}</th>
+        </tr>
+    {% endfor %}
+</table>
+<div>
+    <h4>Table Size: <a href="{{ url_for('fish', tbSize=3) }}">3</a> <a href="{{ url_for('fish', tbSize=5) }}">5</a> <a href="{{ url_for('fish', tbSize=10) }}">10</a></h4>
+    <a href="{{ url_for('index') }}">Back to Home Page</a>
+</div>
+
+</html>

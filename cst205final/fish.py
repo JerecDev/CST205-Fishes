@@ -18,7 +18,8 @@ data = r.json()
 def index():
     return render_template('index.html')
 
-@app.route('/random/<tbSize>')
-def random(tbSize):
+@app.route('/fish/<tbSize>', methods=['GET', 'post'])
+def fish(tbSize):
     randList = choices(data, k=int(tbSize))
-    return render_template('random.html', randList=randList)
+    #data = req.content
+    return render_template('fish.html', data=data, randList=randList)
