@@ -1,22 +1,35 @@
 <!DOCTYPE html>
 <html>
 <body>
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 <h1>Our API</h1>
 <br>
 <br>
 <p>Please enter a species name to learn more about them.</p>
 <!-- center the search box -->
-<style>
+<!-- <style>
     div{
         text-align: center;
     }
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    table.center {
+        margin-left: auto; 
+        margin-right: auto;
+    }
+
     h1{
         text-align: center;
     }
     #search{
         height:20px;
-        width: 25px
+        width: 25px;
         font-size: 14pt;
     }
     p{
@@ -25,7 +38,7 @@
     #searchButtton{
         text-align: center;
     }
-</style>
+</style> -->
 
 <script>
     //retrieve searchedvalue from the searchbox.
@@ -72,4 +85,24 @@
     
 
 </body>
+
+<table class="center">
+    <tr>
+        <th>Species Name</th>
+        <th>Scientific Name</th>
+        <th>Fishing Rate</th>
+    </tr>
+    {% for d in randList %}
+        <tr>
+            <th> {{ d['Species Name'] }}</th>
+            <th> {{ d['Scientific Name'] }}</th>
+            <th> {{ d['Fishing Rate'] }}</th>
+        </tr>
+    {% endfor %}
+</table>
+<div>
+    <h4>Table Size: <a href="{{ url_for('fish', tbSize=3) }}">3</a> <a href="{{ url_for('fish', tbSize=5) }}">5</a> <a href="{{ url_for('fish', tbSize=10) }}">10</a></h4>
+    <a href="{{ url_for('index') }}">Back to Home Page</a>
+</div>
+
 </html>
