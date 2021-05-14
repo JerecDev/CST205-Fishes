@@ -3,7 +3,12 @@
 <body>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 <h1>Lets save some fish!</h1>
-<a href=" {{ url_for('fish', tbSize=3) }}">Search Page</a>
+<nav>
+    <hr width="50%" />
+    <b href="/">Home</b>
+    <a href="/fish/3">Fish Search</a>
+    <a href="/about">About</a>
+</nav>
 
 </body>
 </html>

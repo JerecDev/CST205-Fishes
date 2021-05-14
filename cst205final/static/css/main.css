@@ -26,6 +26,27 @@ body {
     text-decoration: none;
   }
   /*
+    Formatting for the navigation bar
+  */
+nav {
+  text-align: center;
+}
+nav a, b {
+  padding:15px;
+  padding-bottom:4px;
+  font-size:  1.2em;
+  text-decoration: none;
+  color: black;
+}
+nav a:hover {
+  border-bottom:2px orange solid;
+  font-size: 1.6em;
+  transition: .9s;
+}
+nav b {
+  color:DodgerBlue;
+}
+  /*
    * Centering the body content
    */
   .container {
