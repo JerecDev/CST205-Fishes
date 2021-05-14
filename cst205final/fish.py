@@ -23,4 +23,3 @@ def fish(tbSize):
     randList = choices(data, k=int(tbSize))
     #data = req.content
     return render_template('fish.html', data=data, randList=randList)
-    

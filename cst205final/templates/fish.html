@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <body>
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 <h1>Our API</h1>
 <br>
 <br>
 <p>Please enter a species name to learn more about them.</p>
 <!-- center the search box -->
-<style>
+<!-- <style>
     div{
         text-align: center;
     }
@@ -29,7 +29,7 @@
     }
     #search{
         height:20px;
-        width: 25px
+        width: 25px;
         font-size: 14pt;
     }
     p{
@@ -38,7 +38,7 @@
     #searchButtton{
         text-align: center;
     }
-</style>
+</style> -->
 
 <script>
     //retrieve searchedvalue from the searchbox.
