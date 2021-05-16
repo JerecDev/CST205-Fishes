@@ -1,113 +1,63 @@
+<!-- fish.html
+Authors: Ryan Gutierrez, Angelo Ediriweera, 
+Date Last Modifed: 5/15/2021
+Description: Displays a search form for the user to enter the name of a fish, which will lead to another page to display information about the fish from the fishwatch.gov API
+             A some data about randomly chosen fish from the API are displayed in a table below the form. There is also a list of each of the names of the fish from the API to serve
+             as a reference to type into the search form. -->
 <!DOCTYPE html>
 <html>
-<body>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-<h1>Our API</h1>
-<nav>
-    <hr width="50%" />
-    <a href="/">Home</a>
-    <b href="/fish/3">Fish Search</b>
-    <a href="/about">About</a>
-</nav>
-<br>
-<br>
-<p>Please enter a species name to learn more about them.</p>
-<!-- center the search box -->
-<!-- <style>
-    div{
-        text-align: center;
-    }
-    td, th {
-        border: 1px solid #dddddd;
-        text-align: left;
-        padding: 8px;
-    }
-    tr:nth-child(even) {
-        background-color: #dddddd;
-    }
-    table.center {
-        margin-left: auto; 
-        margin-right: auto;
-    }
+    <h1>Learn about a Fish!</h1>
+    <nav>
+        <hr width="50%" />
+        <a href="/">Home</a>
+        <b href="/fish/3">Fish Search</b>
+        <a href="/about">About</a>
+    </nav>
+    <br>
+    <br>
 
-    h1{
-        text-align: center;
-    }
-    #search{
-        height:20px;
-        width: 25px;
-        font-size: 14pt;
-    }
-    p{
-        text-align: center;
-    }
-    #searchButtton{
-        text-align: center;
-    }
-</style> -->
+    <!-- Input form for user to search for a specific fish using its species name (case sensitive) 
+         Created by Ryan Gutierrez -->
+    <p>Please enter a species name to learn more about them (case-sensitive)</p>
+    <form method="POST" action="{{ url_for('fish', tbSize=3) }}">
+        {{ form.csrf_token }}
+        {{ form.name(size=32) }}
+        <input type="submit" value="Submit">
+    </form>
 
-<script>
-    //retrieve searchedvalue from the searchbox.
-    document.getElementById("searchButton").addEventListener("click", startSearch);
-    
-    //search function
-    function startSearch(){
-        var searchedval = document.getElementById("search").value;
-        // var apiUrl = "https://www.fishwatch.gov/api/species/"+searchedval;
-        // fetch(apiUrl).then(response => {return response.json();
-        // }).then(data => {
-        // $(display).update(data);
-        // }).catch(err => {
-        //     //do something here to detect error later.
-        // });
-        
-
-    }
-
-</script>
-
-<div id = "searchdiv">
-    <input type="text" id="search"><br>
-    <button type="button" id= "searchButton">Search</button>
-</div>
-
-
-
-
-
-<div id = display>
-
-</div>
-
-    <!-- the list of data shown from api -->
+    <!-- Table of Random Fish
+         created by Ryan Gutierrez -->
+    <h3>Random Selection:</h3>
+    <table class="center">
+        <tr>
+            <th>Species Name</th>
+            <th>Scientific Name</th>
+            <th>Fishing Rate</th>
+        </tr>
+        {% for d in randList %}
+            <tr>
+                <th><a href="{{ url_for('fishInfo', sciName=d['Species Name']) }}">{{ d['Species Name'] }}</a></th>
+                <th>{{ d['Scientific Name'] }}</th>
+                <th>{{ d['Fishing Rate'] }}</th>
+            </tr>
+        {% endfor %}
+    </table>
     <div>
+        <h4>Table Size: <a href="{{ url_for('fish', tbSize=3) }}">3</a> <a href="{{ url_for('fish', tbSize=5) }}">5</a> <a href="{{ url_for('fish', tbSize=10) }}">10</a></h4>
+    </div>
+
+    <!-- the list of data shown from api
+        Created by Angelo Ediriweera and Ryan Gutierrez -->
+    <div>
+        <br><br>
+        <h4>Species Names Reference</h4>
         {%for datas in data %}
             <span>{{datas['Species Name']}}</span>
             <br>
-            <span>Scientific name: {{datas['Scientific Name']}}</span>
-            <br>
+            <!-- <span>Scientific name: {{datas['Scientific Name']}}</span>
+            <br> -->
         {%endfor%}
     </div>
-    
-
-</body>
-
-<table class="center">
-    <tr>
-        <th>Species Name</th>
-        <th>Scientific Name</th>
-        <th>Fishing Rate</th>
-    </tr>
-    {% for d in randList %}
-        <tr>
-            <th> {{ d['Species Name'] }}</th>
-            <th> {{ d['Scientific Name'] }}</th>
-            <th> {{ d['Fishing Rate'] }}</th>
-        </tr>
-    {% endfor %}
-</table>
-<div>
-    <h4>Table Size: <a href="{{ url_for('fish', tbSize=3) }}">3</a> <a href="{{ url_for('fish', tbSize=5) }}">5</a> <a href="{{ url_for('fish', tbSize=10) }}">10</a></h4>
-</div>
 
 </html>

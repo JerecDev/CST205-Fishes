@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- View fish-specific information
+     Created by Ryan Gutierrez -->
+<html>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <nav>
+        <hr width="50%" />
+        <a href="/">Home</a>
+        <b href="/fish/3">Fish Search</b>
+        <a href="/about">About</a>
+    </nav>
+    <!-- style wouldn't apply in main.css, no idea why -->
+    <style>
+        img{
+            width: 50%;
+            height: auto;
+        }
+        body {
+            min-height: 100vh;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+
+    <h1>{{ fishData["Species Name"] }}</h1>
+    <h4>{{ fishData["Scientific Name"] }}</h4>
+    <img src="{{ img['src'] }}" alt="{{ img['alt'] }}"/>
+    <body>
+        <h3>Location:</h3>
+        {{ fishData["Location"] }}
+
+        <h3>Fishing Rate:</h3>
+        {{ fishData["Fishing Rate"]}}
+
+        <h3>Population:</h3>
+        {{ fishData['Population'] }} {{ fishData['Population Status'] }}
+
+        <h3>Management:</h3>
+        {{ fishData['Fishery Management'] }}
+
+        <h3>Biology:</h3>
+        {{ fishData['Biology'] }}
+
+        <br><br>
+
+        <h4>
+            Data from <a href="https://www.fishwatch.gov/">www.fishwatch.gov</a><br>
+            Last updated on {{ fishData['last_update'] }}
+        </h4>
+    </body>
+
+    
+</html>
