@@ -22,6 +22,8 @@ class Search(FlaskForm):
         validators=[DataRequired()]
     )
 
+# README created by Elijah Barsky-Ex
+
 # Home page for the application
 # Created by Angelo Ediriweera, Zachary Abbett, Elijah Barsky-Ex, and Ryan Gutierrez
 @app.route('/')
@@ -29,7 +31,7 @@ def index():
     return render_template('index.html')
 
 # Routes to about.html which displays sources used in application and information about the creators of the application
-# Created by 
+# Created by Elijah Barsky-Ex
 @app.route('/about')
 def about():
     return render_template('about.html')
