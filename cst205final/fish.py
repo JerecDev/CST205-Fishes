@@ -1,4 +1,3 @@
-# fish.py
 # Authors: Ryan Gutierrez, Elijah Barskey-Ex, Angelo Ediriweera, Zachary Abbett
 # Date Last Modifed: 5/17/2021
 # Description: Central file for the entire flask application, includes routes to all html files and deals with the return data from the API from fishwatch.gov 
