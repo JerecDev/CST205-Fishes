@@ -35,6 +35,10 @@
   https://github.com/JerecDev/CST205-Fishes
   
   
+**Link to Trello**
+  https://trello.com/b/pgvK7Khr/205-project
+  
+  
 **Future work:**
 
   With more time, we would like to pull from additonal resources in order to make the project
