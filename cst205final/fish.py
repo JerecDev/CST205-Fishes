@@ -23,6 +23,7 @@ class Search(FlaskForm):
     )
 
 # README created by Elijah Barsky-Ex
+# Github: https://github.com/JerecDev/CST205-Fishes
 
 # Home page for the application
 # Created by Angelo Ediriweera, Zachary Abbett, Elijah Barsky-Ex, and Ryan Gutierrez
