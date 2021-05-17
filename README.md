@@ -35,7 +35,8 @@
   https://github.com/JerecDev/CST205-Fishes
   
   
-**Link to Trello**
+**Link to Trello:**
+
   https://trello.com/b/pgvK7Khr/205-project
   
   
